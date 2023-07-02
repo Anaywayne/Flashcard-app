@@ -1,0 +1,27 @@
+{% extends "card_details.html" %} {% block title %}Add{% endblock %}
+
+{% block content %}
+
+<div class="col-md-6">
+    <form action="/add_card/{{data.d_id}}" method="POST">
+        <h3 align="center">Add Card</h3>
+        <div class="form-group">
+            <label for="Question"><strong>Enter your Question</strong></label>
+            <input type="text" class="form-control" id="Cardques" name="question" placeholder="Enter Question"
+               maxlength="50" required />
+            
+        </div>
+</div>
+<br>
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="answer"><strong>Enter Answer</strong></label>
+        <input type="text" class="form-control" id="Cardans" name="answer" placeholder="Enter Answer"
+           maxlength="100" required />
+    </div>
+</div>
+<br />
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

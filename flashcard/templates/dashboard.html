@@ -1,0 +1,82 @@
+{% extends "base.html" %} {% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    table {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-collapse: collapse;
+        width: 800px;
+        height: 200px;
+        border: 1px solid #bdc3c7;
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2)
+    }
+
+    tr {
+        transition: all .2s ease-in;
+        cursor: pointer;
+    }
+
+    th,
+    td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {
+        background-color: #f5f5f5;
+        transform: scale(1.02);
+        box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(40, 175, 85, 0.2);
+    }
+
+    #header {
+        background-color: #ffcc99;
+        color: #fff;
+    }
+
+    .box{
+        border: none;
+        color: white;
+        padding: 10px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+</style>
+<table>
+    <tr id="header">
+        <th>Decks</th>
+        <th>Category</th>
+        <th>Score</th>
+        <th>Last Reviewed</th>
+        <th>Action</th>
+    </tr>
+    {% if user.deck %}
+    {% for d in user.deck %}
+    <tr>
+        <td><button type=“button” class="box"><a style="text-decoration: none" href="/deck/dashboard/{{d.d_id}}">{{d.name}}</a></button></td>
+        <td>{{d.title}}</td>
+        <td>{{d.Score}}</td>
+        <td>{{d.last_rev}}</td>
+        <td><a href="/deck/{{d.d_id}}/delete" class="btn-btn-outline-dark">Delete Deck</a></td>
+    </tr>
+    {% endfor %}
+    {% else %}
+        <td>0</td>
+        <td>Null</td>
+        <td>0</td>
+        <td>Null</td>
+        <td>Null</td>
+    {% endif %}
+</table>
+{% endblock %}

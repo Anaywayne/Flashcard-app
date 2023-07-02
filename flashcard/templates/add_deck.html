@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}Add{% endblock %}
+
+{% block content %}
+
+<div class="col-md-6">
+    <form action="/add_deck" method="POST">
+        <h3 align="center">Add Deck</h3>
+        <div class="form-group">
+            <label for="Name">Name of Deck</label>
+            <input type="text" class="form-control" id="Deckname" name="Name" placeholder="Enter name of Deck"
+                required />
+        </div>
+</div>
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="Category">Category of Deck</label>
+        <input type="text" class="form-control" id="Category" name="category" placeholder="Enter Deck Category"
+            required />
+    </div>
+</div>
+<br>
+<br />
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
